@@ -25,6 +25,7 @@ namespace ConsoleApplication2
         List<Command> CommandIdentifiers = new List<ConsoleApplication2.Command>();
         bool rps = false;
         int randSeed = 5;
+        DiscordSocketClient client;
         IAudioClient currentClient = null;
 
         private void InitLists()
@@ -42,6 +43,7 @@ namespace ConsoleApplication2
             CommandIdentifiers.Add(new Command { command = "wordup", question = false, synonyms = new List<string>() });
             CommandIdentifiers.Add(new Command { command = "play", question = false, synonyms = new List<string>() });
             CommandIdentifiers.Add(new Command { command = "sing", question = false, synonyms = new List<string>() });
+            CommandIdentifiers.Add(new Command { command = "game", question = false, synonyms = new List<string>() });
             Console.WriteLine("COMMANDS ADDED");
 
             for (int i = 0; i < CommandIdentifiers.Count; i++)
@@ -78,6 +80,10 @@ namespace ConsoleApplication2
                     CommandIdentifiers[i].synonyms.Add("word");
                     CommandIdentifiers[i].synonyms.Add("street");
                 }
+                else if (CommandIdentifiers[i].command == "game")
+                {
+                    CommandIdentifiers[i].synonyms.Add("game");
+                }
                 else if (CommandIdentifiers[i].command == "play")
                 {
                     CommandIdentifiers[i].synonyms.Add("play");
@@ -97,7 +103,7 @@ namespace ConsoleApplication2
         {
             InitLists();
 
-            var client = new DiscordSocketClient();
+            client = new DiscordSocketClient();
 
             client.Log += Log;
 
@@ -112,6 +118,19 @@ namespace ConsoleApplication2
 
             // Block this task until the program is closed for some reason
             await Task.Delay(-1);
+        }
+
+        public async Task PlayDND(DiscordSocketClient client, SocketMessage message)
+        {
+            DnD Game = new DnD(client);
+            Game.Message = message;
+            client.MessageReceived -= MessageReceived;
+            
+            client.MessageReceived += Game.MessageReceived;
+            await Game.MainAsync(client);
+
+            client.MessageReceived -= Game.MessageReceived;
+            client.MessageReceived += MessageReceived;
         }
 
         private string ParseCommand(SocketMessage message)
@@ -146,6 +165,9 @@ namespace ConsoleApplication2
                                 {
                                     ReturnMessage = "The word on the street is " + RandomWord();
                                 }
+                                break;
+                            case "game":
+                                PlayDND(client,message);
                                 break;
                             case "play":
                                 ReturnMessage = "OK CALM DOWN";
@@ -317,7 +339,7 @@ namespace ConsoleApplication2
             await discord.FlushAsync();
         }
 
-        private async Task MessageReceived(SocketMessage msg)
+        public async Task MessageReceived(SocketMessage msg)
         {
             for (int i = 0; i < SelfIdentifiers.Count; i++)
             {
@@ -480,7 +502,5 @@ namespace ConsoleApplication2
             Console.WriteLine(msg.ToString());
             return Task.CompletedTask;
         }
-
-
     }
 }
