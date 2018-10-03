@@ -1,0 +1,50 @@
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\ConsoleApplication2.exe.config
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\ConsoleApplication2.exe
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\ConsoleApplication2.pdb
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Commands.dll
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Core.dll
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Rest.dll
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Rpc.dll
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Webhook.dll
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.WebSocket.dll
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\Newtonsoft.Json.dll
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\System.Collections.Immutable.dll
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\System.Interactive.Async.dll
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Commands.xml
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Core.xml
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Rest.xml
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Rpc.xml
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Webhook.xml
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.WebSocket.xml
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\Newtonsoft.Json.xml
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\System.Collections.Immutable.xml
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\bin\Debug\System.Interactive.Async.xml
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\obj\Debug\ConsoleApplication2.csprojResolveAssemblyReference.cache
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\obj\Debug\ConsoleApplication2.exe
+C:\Users\iwanc\Documents\ConsoleApplication2\ConsoleApplication2\obj\Debug\ConsoleApplication2.pdb
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\ConsoleApplication2.exe.config
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\obj\Debug\ConsoleApplication2.exe
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\obj\Debug\ConsoleApplication2.pdb
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\ConsoleApplication2.exe
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\ConsoleApplication2.pdb
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Commands.dll
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Core.dll
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Rest.dll
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Rpc.dll
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Webhook.dll
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.WebSocket.dll
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\Newtonsoft.Json.dll
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\System.Collections.Immutable.dll
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\System.Interactive.Async.dll
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Commands.xml
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Core.xml
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Rest.xml
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Rpc.xml
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.Webhook.xml
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\Discord.Net.WebSocket.xml
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\Newtonsoft.Json.xml
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\System.Collections.Immutable.xml
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\System.Interactive.Async.xml
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\obj\Debug\ConsoleApplication2.csprojResolveAssemblyReference.cache
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\YoutubeExtractor.dll
+F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\YoutubeExtractor.xml
