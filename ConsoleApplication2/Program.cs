@@ -45,6 +45,7 @@ namespace ConsoleApplication2
             CommandIdentifiers.Add(new Command { command = "sing", question = false, synonyms = new List<string>() });
             CommandIdentifiers.Add(new Command { command = "game", question = false, synonyms = new List<string>() });
             CommandIdentifiers.Add(new Command { command = "doctor", question = false, synonyms = new List<string>() });
+            CommandIdentifiers.Add(new Command { command = "memes", question = false, synonyms = new List<string>() });
             Console.WriteLine("COMMANDS ADDED");
 
             for (int i = 0; i < CommandIdentifiers.Count; i++)
@@ -96,6 +97,10 @@ namespace ConsoleApplication2
                 else if (CommandIdentifiers[i].command == "doctor")
                 {
                     CommandIdentifiers[i].synonyms.Add("doctor");
+                }
+                else if (CommandIdentifiers[i].command == "memes")
+                {
+                    CommandIdentifiers[i].synonyms.Add("memes");
                 }
             }
 
@@ -198,6 +203,9 @@ namespace ConsoleApplication2
                                     var word2 = RandomWordDoc2();
                                     ReturnMessage = word1 + " " + word2;
                                 }
+                                break;
+                            case "memes":
+                                ReturnMessage = "https://www.youtube.com/watch?v=gQLHsoNQetw&t=0s&index=2&list=PLTosjfC-1Gx90piW7FIBu20KizoR_02qe?autoplay=1";
                                 break;
                         }
                     }
@@ -412,6 +420,8 @@ namespace ConsoleApplication2
                 }
             }
         }
+
+        
 
         private Process CreateStream(string path)
         {
