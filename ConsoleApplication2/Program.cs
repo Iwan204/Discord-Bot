@@ -44,6 +44,7 @@ namespace ConsoleApplication2
             CommandIdentifiers.Add(new Command { command = "play", question = false, synonyms = new List<string>() });
             CommandIdentifiers.Add(new Command { command = "sing", question = false, synonyms = new List<string>() });
             CommandIdentifiers.Add(new Command { command = "game", question = false, synonyms = new List<string>() });
+            CommandIdentifiers.Add(new Command { command = "doctor", question = false, synonyms = new List<string>() });
             Console.WriteLine("COMMANDS ADDED");
 
             for (int i = 0; i < CommandIdentifiers.Count; i++)
@@ -84,13 +85,17 @@ namespace ConsoleApplication2
                 {
                     CommandIdentifiers[i].synonyms.Add("game");
                 }
+                //else if (CommandIdentifiers[i].command == "sing")
+                //{
+                //    CommandIdentifiers[i].synonyms.Add("sing");
+                //}
                 else if (CommandIdentifiers[i].command == "play")
                 {
                     CommandIdentifiers[i].synonyms.Add("play");
                 }
-                else if (CommandIdentifiers[i].command == "sing")
+                else if (CommandIdentifiers[i].command == "doctor")
                 {
-                    CommandIdentifiers[i].synonyms.Add("sing");
+                    CommandIdentifiers[i].synonyms.Add("doctor");
                 }
             }
 
@@ -106,6 +111,8 @@ namespace ConsoleApplication2
             client = new DiscordSocketClient();
 
             client.Log += Log;
+
+            randSeed = System.DateTime.UtcNow.Millisecond;
 
             string token = "NDc2NDY3NjI1MDc4MDMwMzU3.DpV9Rg.9ug6BOefKPGgeSFWpGps3tQPd8Q";
 
@@ -135,6 +142,7 @@ namespace ConsoleApplication2
 
         private string ParseCommand(SocketMessage message)
         {
+            randSeed = System.DateTime.UtcNow.Millisecond;
             string ReturnMessage = "";
             string msg = message.Content.ToLower();
             for (int i = 0; i < CommandIdentifiers.Count; i++)
@@ -169,13 +177,27 @@ namespace ConsoleApplication2
                             case "game":
                                 PlayDND(client,message);
                                 break;
-                            case "play":
-                                ReturnMessage = "OK CALM DOWN";
-                                PlayYT(message, msg.Split(' ')[2]);
-                                break;
+                            //case "play":
+                            //    ReturnMessage = "OK CALM DOWN";
+                            //    PlayYT(message, msg.Split(' ')[2]);
+                             //   break;
                             case "sing":
                                 ReturnMessage = "ok dave";
                                 Sing(message);
+                                break;
+                            case "play":
+                                ReturnMessage = "on it";
+                                Console.WriteLine("begin play song attempt");
+                                PlaySong(message);
+                                break;
+                            case "doctor":
+                                if (message.Content.Contains("generate") || msg.Contains("make"))
+                                {
+                                    var word1 = RandomWordDoc1();
+                                    randSeed = System.DateTime.UtcNow.Millisecond;
+                                    var word2 = RandomWordDoc2();
+                                    ReturnMessage = word1 + " " + word2;
+                                }
                                 break;
                         }
                     }
@@ -198,6 +220,7 @@ namespace ConsoleApplication2
 
             // For the next step with transmitting audio, you would want to pass this Audio Client in to a service.
             currentClient = await channel.ConnectAsync();
+            Console.WriteLine("Channel joined");
         }
 
         public async void PlayYT(SocketMessage msg, string url)
@@ -317,8 +340,82 @@ namespace ConsoleApplication2
             
         }
 
+        public async void PlaySong(SocketMessage msg)
+        {
+            try
+            {
+                await JoinChannel(msg);
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("error in playsong method");
+            }
+
+            DirectoryInfo directory = new DirectoryInfo(@"F:\AI Experiments\Hermes\ConsoleApplication2\ConsoleApplication2\bin\Debug\music");
+            List<FileInfo> lstFiles = new List<FileInfo>();
+            FileInfo[] files = null;
+            string searchPattern = "*.*";
+
+            if (currentClient != null)
+            {
+                try
+                {
+                    Console.WriteLine("searching files");
+                    files = directory.GetFiles(searchPattern, SearchOption.TopDirectoryOnly);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("file searching failed");
+                    return;
+                }
+                if (files != null)
+                {
+                    foreach (FileInfo f in files)
+                    {
+                        Console.WriteLine("file found: "+ f.FullName);
+                        lstFiles.Add(f);
+                    }
+                }
+                string[] messageSplit = msg.Content.ToLower().Split();
+                Dictionary<FileInfo, int> test = new Dictionary<FileInfo, int>();
+
+                foreach (var file in lstFiles)
+                {
+                    var local = 0;
+                    foreach (var item in messageSplit)
+                    {
+                        if (file.Name.ToLower().Contains(item))
+                        {
+                            local = local + 1;
+                        }
+                    }
+                    test.Add(file, local);
+                }
+                //find highest total
+                var SongFile = test.First();
+                foreach (var file in test)
+                {
+                    if (file.Value > SongFile.Value)
+                    {
+                        SongFile = file;
+                    }
+                }
+                try
+                {
+                    await SendAsync(currentClient, "\"" +SongFile.Key.FullName + "\"");
+                }
+                catch (Exception)
+                {
+
+
+                }
+            }
+        }
+
         private Process CreateStream(string path)
         {
+            Console.WriteLine("creating stream");
             var ffmpeg = new ProcessStartInfo
             {
                 FileName = "ffmpeg",
@@ -326,11 +423,13 @@ namespace ConsoleApplication2
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
             };
+            Console.WriteLine("created stream");
             return Process.Start(ffmpeg);
         }
 
         private async Task SendAsync(IAudioClient client, string path)
         {
+            Console.WriteLine("sending async");
             // Create FFmpeg using the previous example
             var ffmpeg = CreateStream(path);
             var output = ffmpeg.StandardOutput.BaseStream;
@@ -418,13 +517,53 @@ namespace ConsoleApplication2
             return Word;
         }
 
+        private string RandomWordDoc1()
+        {
+            string Word = "banana";
+            randSeed = System.DateTime.UtcNow.Millisecond;
+            List<string> RandomStrings = new List<string>();
+            RandomStrings.Add("Ghost");
+            RandomStrings.Add("Curse");
+            RandomStrings.Add("Return");
+            RandomStrings.Add("Horror");
+            RandomStrings.Add("Nigger");
+            RandomStrings.Add("Woman");
+            RandomStrings.Add("Shadow");
+            RandomStrings.Add("World");
+            RandomStrings.Add("War");
+
+            Word = RandomStrings[RandomInt(1, RandomStrings.Count)];
+
+            return Word;
+        }
+
+        private string RandomWordDoc2()
+        {
+            string Word = "banana";
+            randSeed = System.DateTime.UtcNow.Second;
+            List<string> RandomStrings = new List<string>();
+            RandomStrings.Add("Of the Daleks");
+            RandomStrings.Add("Momentum");
+            RandomStrings.Add("From Mars");
+            RandomStrings.Add("from " + RandomWordDoc1()+ RandomWord() + " Road"  );
+            RandomStrings.Add("and the doctor");
+            RandomStrings.Add("over "+RandomWordDoc1() + "smouth");
+            RandomStrings.Add("World");
+            RandomStrings.Add("");
+            RandomStrings.Add("War");
+
+            Word = RandomStrings[RandomInt(1, RandomStrings.Count)];
+
+            return Word;
+        }
+
         private int RandomInt(int min = 0, int max = 100)
         {
             int RandNum = 0;
 
             Random random = new Random(randSeed);
-            RandNum = random.Next(min,max);
 
+            RandNum = random.Next(min, max);
             randSeed = RandNum + randSeed / 2;
 
             return RandNum;
